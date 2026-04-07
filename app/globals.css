@@ -1,0 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Variables globales ───────────────────────────────────── */
+:root {
+  --bg-base: #0a0a0f;
+  --color-violet: #7c3aed;
+  --color-pink: #ec4899;
+  --color-cyan: #06b6d4;
+}
+
+/* ── Reset & base ─────────────────────────────────────────── */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(124, 58, 237, 0.4) transparent;
+}
+
+body {
+  background-color: #0a0a0f;
+  color: #f8fafc;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(124, 58, 237, 0.4);
+  border-radius: 999px;
+}
+
+/* ── Gradient text animado ────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(
+    135deg,
+    #a78bfa 0%,
+    #f472b6 40%,
+    #67e8f9 80%,
+    #a78bfa 100%
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 5s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+
+/* ── Blob animation ───────────────────────────────────────── */
+.animate-blob {
+  animation: blob 9s infinite ease-in-out;
+}
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+@keyframes blob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(30px, -40px) scale(1.08); }
+  66%       { transform: translate(-20px, 20px) scale(0.92); }
+}
+
+/* ── Glass card ───────────────────────────────────────────── */
+.glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-hover {
+  transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+.glass-hover:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(124, 58, 237, 0.4);
+  box-shadow: 0 0 30px rgba(124, 58, 237, 0.15), 0 0 1px rgba(124, 58, 237, 0.5);
+}
+
+/* ── Botones ──────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, #7c3aed, #ec4899);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.35);
+}
+.btn-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(124, 58, 237, 0.55);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #e2e8f0;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  backdrop-filter: blur(8px);
+}
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(124, 58, 237, 0.5);
+  transform: translateY(-2px);
+}
+
+/* ── Section heading ──────────────────────────────────────── */
+.section-tag {
+  display: inline-block;
+  padding: 0.3rem 1rem;
+  border-radius: 999px;
+  background: rgba(124, 58, 237, 0.15);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  color: #a78bfa;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+/* ── Input ────────────────────────────────────────────────── */
+.form-input {
+  width: 100%;
+  padding: 0.85rem 1.1rem;
+  border-radius: 0.65rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f1f5f9;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-input:focus {
+  border-color: rgba(124, 58, 237, 0.6);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+}
+.form-input::placeholder {
+  color: rgba(148, 163, 184, 0.5);
+}
+
+/* ── Noise texture overlay ────────────────────────────────── */
+.noise::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  opacity: 0.25;
+}
